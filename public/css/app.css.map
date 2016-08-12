@@ -1,0 +1,1 @@
+{"version":3,"sources":["app.scss"],"names":[],"mappings":"AAAA;EACE,kBAAkB,EACnB;;AAED;EACI,sBAAsB;EACtB,kBAAkB,EACrB","file":"app.css","sourcesContent":[".list-group-item > .label {\n  margin-right: 1em;\n}\n\n.CommunityLink > form {\n    display: inline-block;\n    margin-right: 1em;\n}\n"],"sourceRoot":"/source/"}
