@@ -13,11 +13,12 @@ class CommunityLinksController extends Controller
      * Show all community links.
      *
      * @param Channel $channel
+     *
      * @return \Illuminate\View\View
      */
     public function index(Channel $channel = null)
     {
-        $links = (new CommunityLinksQuery)->get(
+        $links = (new CommunityLinksQuery())->get(
             request()->exists('popular'), $channel
         );
 
@@ -30,6 +31,7 @@ class CommunityLinksController extends Controller
      * Publish a new community link.
      *
      * @param CommunityLinkForm $form
+     *
      * @return \Illuminate\Http\RedirectResponse
      */
     public function store(CommunityLinkForm $form)
