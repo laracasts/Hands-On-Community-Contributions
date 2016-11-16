@@ -9,8 +9,9 @@ class CommunityLinksQuery
     /**
      * Fetch all relevant community links.
      *
-     * @param  bool   $sortByPopular
-     * @param  string $channel
+     * @param bool   $sortByPopular
+     * @param string $channel
+     *
      * @return mixed
      */
     public function get($sortByPopular, $channel)
