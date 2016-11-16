@@ -16,18 +16,19 @@ class CommunityLink extends Model
     protected $fillable = [
         'channel_id',
         'title',
-        'link'
+        'link',
     ];
 
     /**
      * Create a new instance and associate it with the given user.
      *
-     * @param  User $user
+     * @param User $user
+     *
      * @return static
      */
     public static function from(User $user)
     {
-        $link = new static;
+        $link = new static();
 
         $link->user_id = $user->id;
 
@@ -41,16 +42,18 @@ class CommunityLink extends Model
     /**
      * Contribute the given community link.
      *
-     * @param  array $attributes
-     * @return bool
+     * @param array $attributes
+     *
      * @throws CommunityLinkAlreadySubmitted
+     *
+     * @return bool
      */
     public function contribute($attributes)
     {
         if ($existing = $this->hasAlreadyBeenSubmitted($attributes['link'])) {
             $existing->touch();
 
-            throw new CommunityLinkAlreadySubmitted;
+            throw new CommunityLinkAlreadySubmitted();
         }
 
         return $this->fill($attributes)->save();
@@ -59,8 +62,9 @@ class CommunityLink extends Model
     /**
      * Scope the query to records from a particular channel.
      *
-     * @param  Builder $builder
-     * @param  Channel $channel
+     * @param Builder $builder
+     * @param Channel $channel
+     *
      * @return Builder
      */
     public function scopeForChannel($builder, $channel)
@@ -117,8 +121,9 @@ class CommunityLink extends Model
     /**
      * Determine if the link has already been submitted.
      *
-     * @param  string $link
-     * @return boolean
+     * @param string $link
+     *
+     * @return bool
      */
     protected function hasAlreadyBeenSubmitted($link)
     {

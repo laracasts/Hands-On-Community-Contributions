@@ -31,7 +31,7 @@ class User extends Authenticatable
      */
     public function isTrusted()
     {
-        return !! $this->trusted;
+        return (bool) $this->trusted;
     }
 
     /**
@@ -54,15 +54,16 @@ class User extends Authenticatable
     public function toggleVoteFor(CommunityLink $link)
     {
         CommunityLinkVote::firstOrNew([
-            'user_id' => $this->id,
-            'community_link_id' => $link->id
+            'user_id'           => $this->id,
+            'community_link_id' => $link->id,
         ])->toggle();
     }
 
     /**
      * Determine if the user voted for the given link.
      *
-     * @param  CommunityLink $link
+     * @param CommunityLink $link
+     *
      * @return mixed
      */
     public function votedFor(CommunityLink $link)

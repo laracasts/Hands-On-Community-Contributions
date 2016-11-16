@@ -17,7 +17,8 @@ class VotesController extends Controller
     /**
      * Toggle a vote for the given link.
      *
-     * @param  CommunityLink $link
+     * @param CommunityLink $link
+     *
      * @return \Illuminate\Http\RedirectResponse
      */
     public function store(CommunityLink $link)
